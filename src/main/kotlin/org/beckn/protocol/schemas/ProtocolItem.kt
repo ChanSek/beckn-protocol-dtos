@@ -1,5 +1,8 @@
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ProtocolItem @Default constructor(
   val id: String? = null,
   val parentItemId: String? = null,

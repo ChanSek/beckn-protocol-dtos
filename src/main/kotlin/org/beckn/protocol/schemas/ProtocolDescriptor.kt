@@ -1,7 +1,9 @@
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ProtocolDescriptor @Default constructor(
   val name: String?,
   val code: String? = null,
@@ -10,5 +12,5 @@ data class ProtocolDescriptor @Default constructor(
   val longDesc: String? = null,
   val images: List<String>? = null,
   val audio: String? = null,
-  @JsonProperty("3d_render") val threeDRender: String? = null
+  @SerialName("3d_render") val threeDRender: String? = null
 )

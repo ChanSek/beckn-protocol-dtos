@@ -1,16 +1,16 @@
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 data class ProtocolPrice @Default constructor(
   val currency: String,
   val value: String? = null,
-  @JsonProperty("estimated_value") val estimatedValue: String? = null,
-  @JsonProperty("computed_value") val computedValue: String? = null,
-  @JsonProperty("listed_value") val listedValue: String? = null,
-  @JsonProperty("offered_value") val offeredValue: String? = null,
-  @JsonProperty("minimum_value") val minimumValue: String? = null,
-  @JsonProperty("maximum_value") val maximumValue: String? = null,
+  @SerialName("estimated_value") val estimatedValue: String? = null,
+  @SerialName("computed_value") val computedValue: String? = null,
+  @SerialName("listed_value") val listedValue: String? = null,
+  @SerialName("offered_value") val offeredValue: String? = null,
+  @SerialName("minimum_value") val minimumValue: String? = null,
+  @SerialName("maximum_value") val maximumValue: String? = null,
 )
-

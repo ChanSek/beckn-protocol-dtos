@@ -1,9 +1,16 @@
+@file:UseSerializers(URISerializer::class)
+
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
+import org.beckn.protocol.serializers.URISerializer
+import java.net.URI
 
+@Serializable
 data class ProtocolPayment @Default constructor(
-  val uri: java.net.URI? = null,
+  val uri: URI? = null,
   val tlMethod: TlMethod? = null,
   val params: Map<String, String>? = null,
   val type: Type? = null,
@@ -15,10 +22,11 @@ data class ProtocolPayment @Default constructor(
    *
    * Values: get,post
    */
+  @Serializable
   enum class TlMethod(val value: String) {
-    @JsonProperty("http/get")
+    @SerialName("http/get")
     GET("http/get"),
-    @JsonProperty("http/post")
+    @SerialName("http/post")
     POST("http/post");
   }
 
@@ -26,23 +34,27 @@ data class ProtocolPayment @Default constructor(
    *
    * Values: oNMinusORDER,pREMinusFULFILLMENT,oNMinusFULFILLMENT,pOSTMinusFULFILLMENT
    */
+  @Serializable
   enum class Type(val value: String) {
-    @JsonProperty("ON-ORDER")
+    @SerialName("ON-ORDER")
     ONORDER("ON-ORDER"),
-    @JsonProperty("PRE-FULFILLMENT")
+    @SerialName("PRE-FULFILLMENT")
     PREFULFILLMENT("PRE-FULFILLMENT"),
-    @JsonProperty("ON-FULFILLMENT")
+    @SerialName("ON-FULFILLMENT")
     ONFULFILLMENT("ON-FULFILLMENT"),
-    @JsonProperty("POST-FULFILLMENT")
+    @SerialName("POST-FULFILLMENT")
     POSTFULFILLMENT("POST-FULFILLMENT");
   }
 
+  @Serializable
   enum class Status(val value: String) {
     PAID("PAID"),
-    @JsonProperty("NOT-PAID")
+    @SerialName("NOT-PAID")
     NOTPAID("NOT-PAID");
   }
 }
+
+@Serializable
 data class PaymentParams @Default constructor(
   val transaction_id: String? = null,
   val transaction_status: String? = null,

@@ -1,5 +1,8 @@
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ProtocolOnInitMessageInitialized @Default constructor(
   val provider: ProtocolOnInitMessageInitializedProvider? = null,
   val providerLocation: ProtocolOnInitMessageInitializedProviderLocation? = null,
@@ -12,29 +15,35 @@ data class ProtocolOnInitMessageInitialized @Default constructor(
   val payment: ProtocolPayment? = null
 )
 
+@Serializable
 data class ProtocolOnInitMessageInitializedProviderLocation @Default constructor(
   val id: String? = null
 )
 
+@Serializable
 data class ProtocolOnInitMessageInitializedProvider @Default constructor(
   val id: String? = null
 )
 
+@Serializable
 data class ProtocolOnInitMessageInitializedItems @Default constructor(
   val id: String? = null,
   val quantity: ProtocolItemQuantityAllocated? = null
 )
 
 // TODO: Example of inline declaration
+@Serializable
 data class ProtocolItemQuantityAllocated @Default constructor(
   val count: Int? = null,
   val measure: ProtocolScalar? = null
 )
 
+@Serializable
 data class ProtocolOnInitMessageInitializedAddOns @Default constructor(
   val id: String? = null
 )
 
+@Serializable
 data class ProtocolOnInitMessageInitializedOffers @Default constructor(
   val id: String? = null
 )

@@ -1,5 +1,8 @@
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ProtocolProvider @Default constructor(
   val id: String? = null,
   val descriptor: ProtocolDescriptor? = null,

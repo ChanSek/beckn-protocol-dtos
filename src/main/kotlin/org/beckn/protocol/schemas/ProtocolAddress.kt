@@ -1,5 +1,8 @@
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ProtocolAddress @Default constructor(
   val door: String? = null,
   val name: String? = null,

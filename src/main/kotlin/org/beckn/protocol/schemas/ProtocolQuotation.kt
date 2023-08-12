@@ -1,14 +1,16 @@
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class ProtocolQuotation @Default constructor(
   val price: ProtocolPrice? = null,
   val breakup: List<ProtocolQuotationBreakup>? = null,
   val ttl: String? = null
 )
 
-
+@Serializable
 data class ProtocolQuotationBreakup @Default constructor(
   val title: String? = null,
   val price: ProtocolPrice? = null
@@ -17,7 +19,7 @@ data class ProtocolQuotationBreakup @Default constructor(
   enum class Type(val value: String) {
     ITEM("item"),
     OFFER("offer"),
-    @JsonProperty("add-on")
+    @SerialName("add-on")
     ADDON("add-on"),
     FULFILLMENT("fulfillment");
   }

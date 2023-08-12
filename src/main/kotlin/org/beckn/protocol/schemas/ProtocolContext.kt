@@ -1,10 +1,16 @@
+@file:UseSerializers(OffsetDateTimeSerializer::class)
+
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.Transient
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.UseSerializers
+import org.beckn.protocol.serializers.OffsetDateTimeSerializer
 import java.time.Clock
 import java.time.OffsetDateTime
 
+@Serializable
 data class ProtocolContext @Default constructor(
   val domain: String,
   val country: String,
@@ -17,51 +23,51 @@ data class ProtocolContext @Default constructor(
   val bppUri: String? = null,
   val transactionId: String = "d4d65ff8-0d60-49bf-9288-a07261bb3f29",
   val messageId: String = "d883b720-2100-4a4e-a779-8685cd501e94",
-  @JsonIgnore val clock: Clock = Clock.systemUTC(),
+  @Transient val clock: Clock = Clock.systemUTC(),
   val timestamp: OffsetDateTime = OffsetDateTime.now(clock),
   val key: String? = null,
   val ttl: String? = null,
 ) {
   enum class Action(val value: String) {
-    @JsonProperty("search")
+    @SerialName("search")
     SEARCH("search"),
-    @JsonProperty("select")
+    @SerialName("select")
     SELECT("select"),
-    @JsonProperty("init")
+    @SerialName("init")
     INIT("`init`"),
-    @JsonProperty("confirm")
+    @SerialName("confirm")
     CONFIRM("confirm"),
-    @JsonProperty("update")
+    @SerialName("update")
     UPDATE("update"),
-    @JsonProperty("status")
+    @SerialName("status")
     STATUS("status"),
-    @JsonProperty("track")
+    @SerialName("track")
     TRACK("track"),
-    @JsonProperty("cancel")
+    @SerialName("cancel")
     CANCEL("cancel"),
-    @JsonProperty("rating")
+    @SerialName("rating")
     RATING("rating"),
-    @JsonProperty("support")
+    @SerialName("support")
     SUPPORT("support"),
-    @JsonProperty("on_search")
+    @SerialName("on_search")
     ON_SEARCH("on_search"),
-    @JsonProperty("on_select")
+    @SerialName("on_select")
     ON_SELECT("on_select"),
-    @JsonProperty("on_init")
+    @SerialName("on_init")
     ON_INIT("on_init"),
-    @JsonProperty("on_confirm")
+    @SerialName("on_confirm")
     ON_CONFIRM("on_confirm"),
-    @JsonProperty("on_update")
+    @SerialName("on_update")
     ON_UPDATE("on_update"),
-    @JsonProperty("on_status")
+    @SerialName("on_status")
     ON_STATUS("on_status"),
-    @JsonProperty("on_track")
+    @SerialName("on_track")
     ON_TRACK("on_track"),
-    @JsonProperty("on_cancel")
+    @SerialName("on_cancel")
     ON_CANCEL("on_cancel"),
-    @JsonProperty("on_rating")
+    @SerialName("on_rating")
     ON_RATING("on_rating"),
-    @JsonProperty("on_support")
+    @SerialName("on_support")
     ON_SUPPORT("on_support")
   }
 }

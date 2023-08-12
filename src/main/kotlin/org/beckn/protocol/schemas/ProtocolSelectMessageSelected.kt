@@ -1,5 +1,8 @@
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ProtocolOnSelectMessageSelected @Default constructor(
   val provider: ProtocolProvider? = null,
   val providerLocation: ProtocolLocation? = null,
@@ -9,6 +12,7 @@ data class ProtocolOnSelectMessageSelected @Default constructor(
   val quote: ProtocolQuotation? = null
 )
 
+@Serializable
 data class ProtocolSelectMessageSelected @Default constructor(
   val provider: ProtocolProvider? = null,
   val providerLocation: ProtocolLocation? = null,
@@ -18,6 +22,7 @@ data class ProtocolSelectMessageSelected @Default constructor(
   val quote: ProtocolQuotation? = null
 )
 
+@Serializable
 data class ProtocolOnSelectedItem @Default constructor(
   val id: String,
   val parentItemId: String? = null,
@@ -30,6 +35,7 @@ data class ProtocolOnSelectedItem @Default constructor(
   val quantity: ProtocolItemQuantity,
 )
 
+@Serializable
 data class ProtocolSelectedItem @Default constructor(
   val id: String,
   val parentItemId: String? = null,
@@ -42,6 +48,7 @@ data class ProtocolSelectedItem @Default constructor(
   val quantity: ProtocolItemQuantityAllocated,
 )
 
+@Serializable
 data class ProtocolItemQuantity @Default constructor(
   val allocated: ProtocolItemQuantityAllocated? = null,
   val available: ProtocolItemQuantityAllocated? = null,

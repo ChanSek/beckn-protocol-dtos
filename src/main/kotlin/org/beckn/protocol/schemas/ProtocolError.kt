@@ -1,7 +1,9 @@
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
+@Serializable
 data class ProtocolError @Default constructor(
   val code: String,
   val message: String,
@@ -10,15 +12,15 @@ data class ProtocolError @Default constructor(
 ) {
 
   enum class Type(val value: String) {
-    @JsonProperty("CONTEXT-ERROR")
+    @SerialName("CONTEXT-ERROR")
     CONTEXTERROR("CONTEXT-ERROR"),
-    @JsonProperty("CORE-ERROR")
+    @SerialName("CORE-ERROR")
     COREERROR("CORE-ERROR"),
-    @JsonProperty("DOMAIN-ERROR")
+    @SerialName("DOMAIN-ERROR")
     DOMAINERROR("DOMAIN-ERROR"),
-    @JsonProperty("POLICY-ERROR")
+    @SerialName("POLICY-ERROR")
     POLICYERROR("POLICY-ERROR"),
-    @JsonProperty("JSON-SCHEMA-ERROR")
+    @SerialName("JSON-SCHEMA-ERROR")
     JSONSCHEMAERROR("JSON-SCHEMA-ERROR");
   }
 }

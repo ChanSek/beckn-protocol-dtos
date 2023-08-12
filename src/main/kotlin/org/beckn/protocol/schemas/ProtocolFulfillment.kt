@@ -1,5 +1,16 @@
+@file:UseSerializers(OffsetDateTimeSerializer::class, LocalDateSerializer::class)
+
 package org.beckn.protocol.schemas
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.UseSerializers
+import org.beckn.protocol.serializers.LocalDateSerializer
+import org.beckn.protocol.serializers.OffsetDateTimeSerializer
+import java.time.LocalDate
+import java.time.OffsetDateTime
+
+@Serializable
 data class ProtocolFulfillment @Default constructor(
   val id: String? = null,
   val type: String? = null,//todo: is this a string or an enum?
@@ -12,33 +23,37 @@ data class ProtocolFulfillment @Default constructor(
   val end: ProtocolFulfillmentEnd? = null,
   val customer: ProtocolCustomer? = null,
   val tags: Map<String, String>? = null,
-  val provider_id: String? = null,
+  @SerialName("provider_id")
+  val providerId: String? = null,
   val rating: Int? = null
 )
 
+@Serializable
 data class ProtocolCustomer @Default constructor(
   val person: ProtocolPerson? = null,
   val contact: ProtocolContact? = null
 )
 
+@Serializable
 data class ProtocolState @Default constructor(
   val descriptor: ProtocolDescriptor? = null,
-  val updatedAt: java.time.OffsetDateTime? = null,
+  val updatedAt: OffsetDateTime? = null,
   val updatedBy: String? = null
 )
 
+@Serializable
 data class ProtocolPerson @Default constructor(
   val name: String? = null,
   val id: String? = null,
   val image: String? = null,
-  val dob: java.time.LocalDate? = null,
+  val dob: LocalDate? = null,
   val gender: String? = null,
   val cred: String? = null,
   val tags: Map<String, String>? = null,
   val descriptor: ProtocolDescriptor? = null,
-
 )
 
+@Serializable
 data class ProtocolVehicle @Default constructor(
   val category: String? = null,
   val capacity: Int? = null,
@@ -52,6 +67,7 @@ data class ProtocolVehicle @Default constructor(
 )
 
 // TODO Similar classes
+@Serializable
 data class ProtocolFulfillmentStart @Default constructor(
   val location: ProtocolLocation? = null,
   val time: ProtocolTime? = null,
@@ -60,6 +76,7 @@ data class ProtocolFulfillmentStart @Default constructor(
 )
 
 // TODO Similar classes
+@Serializable
 data class ProtocolFulfillmentEnd @Default constructor(
   val location: ProtocolLocation? = null,
   val time: ProtocolTime? = null,
@@ -67,7 +84,7 @@ data class ProtocolFulfillmentEnd @Default constructor(
   val contact: ProtocolContact? = null
 )
 
-
+@Serializable
 data class ProtocolContact @Default constructor(
   val phone: String? = null,
   val email: String? = null,

@@ -1,16 +1,22 @@
+@file:UseSerializers(LocalDateTimeSerializer::class)
 package org.beckn.protocol.schemas
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.UseSerializers
+import org.beckn.protocol.serializers.LocalDateTimeSerializer
 import java.time.LocalDateTime
 
+@Serializable
 data class ProtocolCatalog @Default constructor(
-  @JsonProperty("bpp/descriptor") val bppDescriptor: ProtocolDescriptor? = null,
-  @JsonProperty("bpp/providers") val bppProviders: List<ProtocolProviderCatalog>? = null,
-  @JsonProperty("bpp/categories") val bppCategories: List<ProtocolCategory>? = null,
+  @SerialName("bpp/descriptor") val bppDescriptor: ProtocolDescriptor? = null,
+  @SerialName("bpp/providers") val bppProviders: List<ProtocolProviderCatalog>? = null,
+  @SerialName("bpp/categories") val bppCategories: List<ProtocolCategory>? = null,
   val id: String? = null,
   val exp: LocalDateTime? = null
 )
 
+@Serializable
 data class ProtocolProviderCatalog @Default constructor(
   val id: String? = null,
   val descriptor: ProtocolDescriptor? = null,
