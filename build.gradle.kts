@@ -25,7 +25,6 @@ repositories {
 dependencies {
   implementation(kotlin("stdlib-jdk8"))
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0-RC")
-  implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.0-RC")
 }
 
 val compileKotlin: KotlinCompile by tasks
