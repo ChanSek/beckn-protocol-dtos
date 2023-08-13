@@ -3,10 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
   kotlin("jvm") version "1.9.0"
   kotlin("plugin.serialization") version "1.9.0"
+  id("maven-publish")
 }
 
 group = "org.beckn.jvm"
-version = "0.0.1"
+version = "0.0.2"
 
 buildscript {
   repositories { mavenCentral() }
@@ -34,4 +35,12 @@ compileKotlin.kotlinOptions {
 
 java {
   sourceCompatibility = JavaVersion.VERSION_11
+}
+
+publishing {
+  publications {
+    create<MavenPublication>("maven") {
+      from(components["java"])
+    }
+  }
 }
