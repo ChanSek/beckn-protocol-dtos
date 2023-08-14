@@ -6,8 +6,8 @@ plugins {
   id("maven-publish")
 }
 
-group = "org.beckn.jvm"
-version = "0.0.2"
+group = "io.chanse.ondc"
+version = "0.0.3"
 
 buildscript {
   repositories { mavenCentral() }

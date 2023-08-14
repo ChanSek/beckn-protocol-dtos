@@ -2,8 +2,9 @@ package org.beckn.protocol.schemas
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import org.beckn.protocol.serializers.PriceSerializer
 
-@Serializable
+@Serializable(with = PriceSerializer::class)
 data class ProtocolPrice @Default constructor(
   val currency: String,
   val value: String? = null,
