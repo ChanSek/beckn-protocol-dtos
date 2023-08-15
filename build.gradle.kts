@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
   implementation(kotlin("stdlib-jdk8"))
-  implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+  implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.5")
 }
 
 val compileKotlin: KotlinCompile by tasks
