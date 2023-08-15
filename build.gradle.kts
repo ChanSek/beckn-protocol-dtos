@@ -1,18 +1,18 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.9.0"
+  kotlin("jvm") version "1.7.10"
   id("maven-publish")
 }
 
 group = "io.chanse.locals.cerve.beckn"
-version = "0.0.4"
+version = "0.0.5"
 
 buildscript {
   repositories { mavenCentral() }
 
   dependencies {
-    val kotlinVersion = "1.9.0"
+    val kotlinVersion = "1.7.10"
     classpath(kotlin("gradle-plugin", version = kotlinVersion))
   }
 }
