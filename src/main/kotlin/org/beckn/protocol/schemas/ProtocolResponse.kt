@@ -1,7 +1,6 @@
 package org.beckn.protocol.schemas
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import kotlinx.serialization.Serializable
 
 interface ProtocolResponse {
   val context: ProtocolContext?
@@ -20,7 +19,6 @@ data class ResponseMessage @Default constructor(val ack: ProtocolAck) {
   }
 }
 
-@Serializable
 enum class ResponseStatus(
   val status: String
 ) {
